@@ -1,0 +1,21 @@
+version: "3.3"
+
+services:
+  myubuntu:
+    image: centos7-ssh
+    container_name: k8s-master
+    command: /usr/sbin/sshd -D
+    restart: always
+    ports:
+      - "3001:22"
+      - "10080:80"
+      - "18080:8080"
+    expose:
+      - "3001"
+      - "10080"
+      - "18080"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.2"
+          memory: 4096M
